@@ -7,10 +7,20 @@
 </head>
 <body>
   <h2>Signup</h2>
-  <form action="/signup/" method="post">
+  <form action="{% url 'signup' %}" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+  
+    <label for="id_username">Username:</label><br>
+    {{ form.username }}<br><br>
+  
+    <label for="id_email">Email:</label><br>
+    {{ form.email }}<br><br>
+  
+    <label for="id_password">Password:</label><br>
+    {{ form.password }}<br><br>
+  
     <input type="submit" value="Signup">
   </form>
+  
 </body>
 </html>
