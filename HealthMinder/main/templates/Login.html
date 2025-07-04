@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Login Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h2>Login</h2>
-  <form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-  </form>
+<body class="bg-gray-100">
+  <div class="flex h-screen items-center justify-center p-4">
+    <div class="xl:w-1/2 rounded-2xl border border-blue-800 bg-white md:shadow-xl">
+      <div class="grid md:grid-cols-2 p-5">
+        
+        <!-- Left Side Image -->
+        <div class="hidden md:block">
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-10299071-8333958.png?f=webp" alt="Login Illustration" class="w-full h-full object-contain" />
+        </div>
 
-  {% if messages %}
-    <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+        <!-- Right Side Form -->
+        <div class="flex items-center justify-center">
+          <form action="{% url 'login' %}" method="post" class="w-full px-6">
+            {% csrf_token %}
+            <h1 class="text-center text-2xl font-extrabold uppercase text-rose-500 mb-6">User Login</h1>
+            
+            <!-- Django form rendering -->
+            <div class="space-y-4">
+              {{ form.as_p }}
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="mt-6 w-full rounded-2xl bg-rose-500 px-5 py-3 font-semibold text-white hover:bg-rose-600 transition">
+              Login
+            </button>
+
+            <!-- Display messages -->
+            {% if messages %}
+              <ul class="mt-4 text-sm text-center text-red-500">
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+
